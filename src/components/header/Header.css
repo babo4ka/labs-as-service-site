@@ -1,0 +1,17 @@
+.header{
+    /* height: 100px; */
+    background-color: rgba(6, 42, 161, 0.623)
+}
+
+
+.info-field{
+    display: flex;
+    flex-direction: column;
+
+    font-size: 25px;
+    font-weight: 500;
+}
+
+#group-info{
+    font-size: 20px;
+}
