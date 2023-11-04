@@ -15,3 +15,8 @@
 #group-info{
     font-size: 20px;
 }
+
+.link{
+    text-decoration: none;
+    color: black;
+}
