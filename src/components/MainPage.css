@@ -1,0 +1,4 @@
+.info_about_task{
+    display: flex;
+    flex-direction: column;
+}

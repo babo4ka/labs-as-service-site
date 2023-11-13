@@ -1,8 +1,11 @@
 .header{
     /* height: 100px; */
-    background-color: rgb(2, 50, 206);
-    box-shadow: 0px 5px 10px black;
+    background-color: #fcf04d;
+    /* box-shadow: 0px 5px 10px black; */
     backdrop-filter: blur(4.4px);
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-bottom: 50px;
 }
 
 
@@ -21,4 +24,14 @@
 .link{
     text-decoration: none;
     color: black;
+}
+
+#name_{
+    font-size: 65px;
+    margin-left: 45px;
+    vertical-align: middle;
+}
+
+#about{
+    vertical-align: middle;
 }

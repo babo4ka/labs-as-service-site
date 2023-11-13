@@ -4,23 +4,25 @@ const Header = () =>{
 
     return(
         <div className="container-fluid header">
-            <div className="row">
-                <div className="col-8 row">
+            <div className="row align-items-center">
+                <div className="col-12 row mt-3 align-items-center">
+                    <h3 className="col-lg-8 col-12 text-wrap text-center">Что-то типо моих лабораторных работ</h3>
+                    <span className="col-lg-4 col-12 text-center">8-929-720-55-22</span>
+                </div>
+
+
+                <div className="col-lg-6 col-12 mt-5">
                     <div className="info-field">
-                        <span>Иванов Евгений Александрович</span>
-                        <span id="group-info">Группа 09-151, 3 курс</span>
+                        <span id="name_" className="text-wrap text-center">Иванов Евгений Александрович</span>
                     </div>
                 </div>
 
-                <div className="col-4">
-                    <div className="info-field">
-                        <span>Телефон: 8-929-720-55-22</span>
-                        <div>
-                            <a href="https://vk.com/ya_tut_babo4ka" className="link">Вконтакте</a>
-                            <a href="https://t.me/ya_tut_babo4ka" className="link">Телеграм</a>
-                        </div>
-                    </div>
+                <div className="col-lg-6 col-12 mt-5">
+                    <span id="about" className="text-center text-wrap">Студент 3 курса Казанского Федерального Университета<br/>
+                    Институт вычислительной математики и информационных технологий<br/>
+                    Направление подготовки: прикладаня информатика</span>
                 </div>
+
             </div>
         </div>
     )

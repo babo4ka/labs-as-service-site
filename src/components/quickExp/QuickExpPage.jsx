@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Header from "../header/Header"
 import "./QuickExp.css"
 import $ from "jquery"
@@ -34,34 +34,38 @@ const QuickExpPage = ()=>{
     }
 
 
-    let stage = anychart.graphics.create();
+    let quickAlgStage = anychart.graphics.create();
+    let longAlgStage = anychart.graphics.create();
 
 
     const [quickExpModGrLen, setQuickExpModGrLen] = useState(0)
     const [quickExpModGrStep, setQuickExpModGrStep] = useState(0)
     const [quickExpModGrCount, setQuickExpModGrCount] = useState(0)
-    const [quickExpModChart , setQuickExpModChart] = useState(anychart.line([]))
+    const [quickExpModChart , setQuickExpModChart] = useState(anychart.line())
 
     quickExpModChart.bounds(1, 0, '100%', '50%');
+    
     const quickExpModStatsRequest = async()=>{
-        $.get(`http://localhost:8080/quickExpModStats?length=${quickExpModGrLen}&step=${quickExpModGrStep}&count=${quickExpModGrCount}`, function(data){
+        $.get(`http://localhost:8080/quickExpModStats?length=${quickExpModGrLen}&step=${quickExpModGrStep}&count=${quickExpModGrCount}`, 
+        function(data){
             var chartData = new Array()
             for(let i=0;i<data["quickTimes"].length;i++){
                 chartData.push([data["numsLength"][i], data["quickTimes"][i]])
             }
-            console.log(chartData)
-            setQuickExpModChart(anychart.line(chartData))
+            quickExpModChart.removeAllSeries()
+            quickExpModChart.line(chartData)
         });
     }
 
     const [quickExpAndModGrLen, setQuickExpAndModGrLen] = useState(0)
     const [quickExpAndModGrStep, setQuickExpAndModGrStep] = useState(0)
     const [quickExpAndModGrCount, setQuickExpAndModGrCount] = useState(0)
-    const [quickExpAndModChart , setQuickExpAndModChart] = useState(anychart.line([]))
+    const [quickExpAndModChart , setQuickExpAndModChart] = useState(anychart.line())
 
     quickExpAndModChart.bounds(1, 0, '100%', '50%');
     const quickExpAndModStatsRequest = async()=>{
-        $.get(`http://localhost:8080/quickExpAndModStats?length=${quickExpAndModGrLen}&step=${quickExpAndModGrStep}&count=${quickExpAndModGrCount}`, function(data){
+        $.get(`http://localhost:8080/quickExpAndModStats?length=${quickExpAndModGrLen}&step=${quickExpAndModGrStep}&count=${quickExpAndModGrCount}`, 
+        function(data){
             var quickChartData = new Array()
             var longChartData = new Array()
 
@@ -69,14 +73,28 @@ const QuickExpPage = ()=>{
                 quickChartData.push([data["numsLength"][i], data["quickTimes"][i]])
                 longChartData.push([data["numsLength"][i], data["longTimes"][i]])
             }
-            console.log(quickChartData)
-            console.log(longChartData)
-            setQuickExpAndModChart(anychart.line(longChartData))
-            setQuickExpModChart(anychart.line(quickChartData))
-            
+            quickExpAndModChart.removeAllSeries()
+            quickExpAndModChart.legend(true)
+            var quickSeries = quickExpAndModChart.line(quickChartData)
+            var longSeries = quickExpAndModChart.line(longChartData)
+            quickSeries.name("a^b mod m")
+            longSeries.name("(a^b) mod m")
+            quickSeries.normal().stroke("#04b404");
+            longSeries.normal().stroke("#ff2400");
         });
     }
 
+    useEffect(()=>{
+        quickExpModChart.xAxis().title("битовая длина числа")
+        quickExpModChart.yAxis().title("время выполнения алгоритма в наносекундах")
+
+        quickExpAndModChart.xAxis().title("битовая длина числа")
+        quickExpAndModChart.yAxis().title("время выполнения алгоритма в наносекундах")
+    })
+
+    const copyAnswer = (text)=>{
+        navigator.clipboard.writeText(text)
+    }
 
     return(
         <div>
@@ -96,12 +114,17 @@ const QuickExpPage = ()=>{
                         </div>
                         
                         <div className="col-12 answer-field-hidden" id="quickExpAnswer">
-                            <span className="text-wrap">{quickExpA} в степени {quickExpB} будет {quickExpAnswer}</span>
+                            <span className="text-wrap">{quickExpA} в степени {quickExpB} будет 
+                            {quickExpAnswer.toString(10).length > 15?
+                            quickExpAnswer.toString(10).substring(0, 15) +"...":quickExpAnswer}</span>
                         </div>
 
                         <div className="col-12 mt-2 mb-2">
                             <button className="btn calculate-btn" onClick={quickExpRequest}>
                                 Посчитать
+                            </button>
+                            <button className="btn calculate-btn" onClick={()=>copyAnswer(quickExpAnswer)}>
+                               Копировать ответ
                             </button>
                         </div>
                         
@@ -151,6 +174,24 @@ const QuickExpPage = ()=>{
                         </div>
                     </div>
 
+                    <div className="col-9 graphics-area mt-3">
+                        <AnyChart
+                            id="quickGraph"
+                            instance={quickAlgStage}
+                            width={800}
+                            height={600}
+                            charts={[quickExpModChart]}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <hr size="4" className="mt-5"/>
+            <h3 className="text-center">График сравнения времени выполнения алгоритмов</h3>
+
+            <div className="container-fluid">
+                <div className="row">
+
                     <div className="col-3 input-data-area">
                         <div className="input-data-fields mt-3">
                             <span className="col-12">Введите данные</span>
@@ -165,15 +206,15 @@ const QuickExpPage = ()=>{
 
                     <div className="col-9 graphics-area mt-3">
                         <AnyChart
-                            instance={stage}
+                            id="longGraph"
+                            instance={longAlgStage}
                             width={800}
                             height={600}
-                            charts={[quickExpAndModChart, quickExpModChart]}
+                            charts={[quickExpAndModChart]}
                         />
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }
