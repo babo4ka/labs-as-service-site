@@ -39,15 +39,15 @@ const MainPage = ()=>{
                     <hr className="mt-5"></hr>
                     <div className="col-12 row one-task-holder justify-content-center align-items-center">
                         <h2 className="col-12 text-end text-wrap">Алгоритм Миллера-Рабина</h2>
-                        <div className="col-6 row justify-content-center">
+                        <div className="col-6 row justify-content-center mt-5">
                             <a href="/primeCheck" className="text-center lab-res-link">Посмотреть результаты &rarr;</a>
                             {/* <SubjectCard subjectInfo={subjects[1]}></SubjectCard> */}
                         </div>
                         
-                        <div className="col-6 info_about_task">
-                        <span className="text-center text-wrap col-6">Краткое описание алгоритма<br/>
-                            блабла бла балб ала блб ал абла бл<br/>
-                            юбдбла ла ба лабл выалывф ф</span>
+                        <div className="col-6 info_about_task mt-5">
+                            <span className="text-center text-wrap col-6">Краткое описание алгоритма<br/>
+                                блабла бла балб ала блб ал абла бл<br/>
+                                юбдбла ла ба лабл выалывф ф</span>
                         </div>
                     </div>
                     

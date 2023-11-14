@@ -43,7 +43,7 @@ const QuickExpPage = ()=>{
     const [quickExpModGrCount, setQuickExpModGrCount] = useState(0)
     const [quickExpModChart , setQuickExpModChart] = useState(anychart.line())
 
-    quickExpModChart.bounds(1, 0, '100%', '50%');
+    quickExpModChart.bounds(1, 0, '100%', '100%');
     
     const quickExpModStatsRequest = async()=>{
         $.get(`http://localhost:8080/quickExpModStats?length=${quickExpModGrLen}&step=${quickExpModGrStep}&count=${quickExpModGrCount}`, 
@@ -62,7 +62,7 @@ const QuickExpPage = ()=>{
     const [quickExpAndModGrCount, setQuickExpAndModGrCount] = useState(0)
     const [quickExpAndModChart , setQuickExpAndModChart] = useState(anychart.line())
 
-    quickExpAndModChart.bounds(1, 0, '100%', '50%');
+    quickExpAndModChart.bounds(1, 0, '100%', '100%');
     const quickExpAndModStatsRequest = async()=>{
         $.get(`http://localhost:8080/quickExpAndModStats?length=${quickExpAndModGrLen}&step=${quickExpAndModGrStep}&count=${quickExpAndModGrCount}`, 
         function(data){
@@ -88,8 +88,12 @@ const QuickExpPage = ()=>{
         quickExpModChart.xAxis().title("битовая длина числа")
         quickExpModChart.yAxis().title("время выполнения алгоритма в наносекундах")
 
+        quickExpModChart.background().fill("rgba(189, 189, 189, 0)")
+
         quickExpAndModChart.xAxis().title("битовая длина числа")
         quickExpAndModChart.yAxis().title("время выполнения алгоритма в наносекундах")
+
+        quickExpAndModChart.background().fill("rgba(189, 189, 189, 0)")
     })
 
     const copyAnswer = (text)=>{
@@ -97,30 +101,30 @@ const QuickExpPage = ()=>{
     }
 
     return(
-        <div>
-            <a href="/" className="return-to-main-btn">Вернуться на главную</a>
-            <h4 className="mt-3">Решение задачи про быстрое возведение в степень</h4>
+        <div id="quickExpPage">
+            <a href="/" className="return-to-main-btn">&larr; Вернуться на главную</a>
+            <h4 className="mt-3 text-center" style={{color:"#fcfbfc"}}>Решение задачи про быстрое возведение в степень</h4>
 
             <div className="container mt-3">
                 <div className="row justify-content-center">
                     <div className="col-6 justify-content-center quick-exp-container">
                         <div className="col-12">
-                            <span className="col-6 fw-bold">Быстрое возведение числа в степень</span>
+                            <span className="col-6 fw-bold" style={{color:"#fcfbfc"}}>Быстрое возведение числа в степень<br/></span>
+                            <span className="col-6 fw-bold" style={{color:"#fcfbfc"}}>a^b</span>
                         </div>
                         
-                        <div className="col-12 mt-2">
-                            <input onChange={()=>setQuickExpA($("#quickExpAInput").val())} id="quickExpAInput" type="number" placeholder="Число" className="col-6"/>
-                            <input onChange={()=>setQuickExpB($("#quickExpBInput").val())} id="quickExpBInput" type="number" placeholder="Степень" className="col-6"/>
+                        <div className="col-12 mt-2 row justify-content-center mx-auto">
+                            <input onChange={()=>setQuickExpA($("#quickExpAInput").val())} id="quickExpAInput" type="number" placeholder="a" className="col-4 arg-inp"/>
+                            <input onChange={()=>setQuickExpB($("#quickExpBInput").val())} id="quickExpBInput" type="number" placeholder="b" className="col-4 arg-inp"/>
                         </div>
                         
                         <div className="col-12 answer-field-hidden" id="quickExpAnswer">
-                            <span className="text-wrap">{quickExpA} в степени {quickExpB} будет 
-                            {quickExpAnswer.toString(10).length > 15?
+                            <span className="text-wrap" style={{color:"#fcfbfc"}}>{quickExpA} в степени {quickExpB} будет {quickExpAnswer.toString(10).length > 15?
                             quickExpAnswer.toString(10).substring(0, 15) +"...":quickExpAnswer}</span>
                         </div>
 
                         <div className="col-12 mt-2 mb-2">
-                            <button className="btn calculate-btn" onClick={quickExpRequest}>
+                            <button className="btn calculate-btn"  onClick={quickExpRequest}>
                                 Посчитать
                             </button>
                             <button className="btn calculate-btn" onClick={()=>copyAnswer(quickExpAnswer)}>
@@ -132,22 +136,27 @@ const QuickExpPage = ()=>{
 
                     <div className="col-6 justify-content-center quick-exp-container">
                         <div className="col-12">
-                            <span className="col-6 fw-bold">Быстрое возведение числа в степень по модулю</span>
+                            <span className="col-6 fw-bold" style={{color:"#fcfbfc"}}>Быстрое возведение числа в степень по модулю<br/></span>
+                            <span className="col-6 fw-bold" style={{color:"#fcfbfc"}}>a^b mod m</span>
                         </div>
                         
-                        <div className="col-12 mt-2">
-                            <input onChange={()=>setQuickExpModA($("#quickExpModAInput").val())} id="quickExpModAInput" type="number" placeholder="Число" className="col-6"/>
-                            <input onChange={()=>setQuickExpModB($("#quickExpModBInput").val())} id="quickExpModBInput" type="number" placeholder="Степень" className="col-6"/>
-                            <input onChange={()=>setQuickExpModN($("#quickExpModNInput").val())} id="quickExpModNInput" type="number" placeholder="Модуль" className="col-6"/>
+                        <div className="col-12 mt-2 row justify-content-center mx-auto">
+                            <input onChange={()=>setQuickExpModA($("#quickExpModAInput").val())} id="quickExpModAInput" type="number" placeholder="a" className="col-3 arg-inp"/>
+                            <input onChange={()=>setQuickExpModB($("#quickExpModBInput").val())} id="quickExpModBInput" type="number" placeholder="b" className="col-3 arg-inp"/>
+                            <input onChange={()=>setQuickExpModN($("#quickExpModNInput").val())} id="quickExpModNInput" type="number" placeholder="m" className="col-3 arg-inp"/>
                         </div>
                         
                         <div className="col-12 answer-field-hidden" id="quickExpModAnswer">
-                            <span className="text-wrap">{quickExpModA} в степени {quickExpModB} по модулю {quickExpModN} будет {quickExpModAnswer}</span>
+                            <span className="text-wrap" style={{color:"#fcfbfc"}}>{quickExpModA} в степени {quickExpModB} по модулю {quickExpModN} будет {quickExpModAnswer}</span>
                         </div>
 
                         <div className="col-12 mt-2 mb-2">
                             <button className="btn calculate-btn" onClick={quickExpModRequest}>
                                 Посчитать
+                            </button>
+
+                            <button className="btn calculate-btn" onClick={()=>copyAnswer(quickExpModAnswer)}>
+                               Копировать ответ
                             </button>
                         </div>
                         
@@ -158,17 +167,24 @@ const QuickExpPage = ()=>{
 
         
             <hr size="4" className="mt-5"/>
-            <h3 className="text-center">График времени выполнения алгоритма в зависимости от битовой длины числа</h3>
+            <h3 className="text-center" style={{color:"#fcfbfc"}}>График времени выполнения алгоритма в зависимости от битовой длины числа</h3>
 
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-3 input-data-area">
                         <div className="input-data-fields mt-3">
-                            <span className="col-12">Введите данные</span>
-                            <input onChange={()=>setQuickExpModGrLen($("#firstNumLengthInput").val())} id="firstNumLengthInput" className="col-12 mt-2" type="number" placeholder="Длина первого числа"/>
-                            <input onChange={()=>setQuickExpModGrStep($("#stepInput").val())} id="stepInput" className="col-12 mt-2" type="number" placeholder="Шаг длины"/>
-                            <input onChange={()=>setQuickExpModGrCount($("#countInput").val())} id="countInput" className="col-12 mt-2 mb-2" type="number" placeholder="Количество"/>
-                            <button className="btn calculate-btn col-12" onClick={quickExpModStatsRequest}>
+                            <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>Введите данные<br/></span>
+                            <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>l - длина первого числа в битах<br/></span>
+                            <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>s - шаг длины<br/></span>
+                            <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>c - количество чисел</span>
+
+                            <div className="col-12 mt-2 row justify-content-center mx-auto">
+                                <input onChange={()=>setQuickExpModGrLen($("#firstNumLengthInput").val())} id="firstNumLengthInput" className="col-3 arg-inp" type="number" placeholder="l"/>
+                                <input onChange={()=>setQuickExpModGrStep($("#stepInput").val())} id="stepInput" className="col-3 arg-inp" type="number" placeholder="s"/>
+                                <input onChange={()=>setQuickExpModGrCount($("#countInput").val())} id="countInput" className="col-3 arg-inp" type="number" placeholder="c"/>
+                            </div>
+                           
+                            <button className="btn calculate-btn" onClick={quickExpModStatsRequest}>
                                 Посчитать
                             </button>
                         </div>
@@ -179,7 +195,7 @@ const QuickExpPage = ()=>{
                             id="quickGraph"
                             instance={quickAlgStage}
                             width={800}
-                            height={600}
+                            height={300}
                             charts={[quickExpModChart]}
                         />
                     </div>
@@ -187,18 +203,24 @@ const QuickExpPage = ()=>{
             </div>
 
             <hr size="4" className="mt-5"/>
-            <h3 className="text-center">График сравнения времени выполнения алгоритмов</h3>
+            <h3 className="text-center" style={{color:"#fcfbfc"}}>График сравнения времени выполнения алгоритмов</h3>
 
             <div className="container-fluid">
                 <div className="row">
 
                     <div className="col-3 input-data-area">
                         <div className="input-data-fields mt-3">
-                            <span className="col-12">Введите данные</span>
-                            <input onChange={()=>setQuickExpAndModGrLen($("#firstNumLengthInput2").val())} id="firstNumLengthInput2" className="col-12 mt-2" type="number" placeholder="Длина первого числа"/>
-                            <input onChange={()=>setQuickExpAndModGrStep($("#stepInput2").val())} id="stepInput2" className="col-12 mt-2" type="number" placeholder="Шаг длины"/>
-                            <input onChange={()=>setQuickExpAndModGrCount($("#countInput2").val())} id="countInput2" className="col-12 mt-2 mb-2" type="number" placeholder="Количество"/>
-                            <button className="btn calculate-btn col-12" onClick={quickExpAndModStatsRequest}>
+                            <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>Введите данные<br/></span>
+                            <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>l - длина первого числа в битах<br/></span>
+                            <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>s - шаг длины<br/></span>
+                            <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>c - количество чисел</span>
+                            <div className="col-12 mt-2 row justify-content-center mx-auto">
+                                <input onChange={()=>setQuickExpAndModGrLen($("#firstNumLengthInput2").val())} id="firstNumLengthInput2" className="col-3 arg-inp" type="number" placeholder="l"/>
+                                <input onChange={()=>setQuickExpAndModGrStep($("#stepInput2").val())} id="stepInput2" className="col-3 arg-inp" type="number" placeholder="s"/>
+                                <input onChange={()=>setQuickExpAndModGrCount($("#countInput2").val())} id="countInput2" className="col-3 arg-inp" type="number" placeholder="c"/>
+                            </div>
+                           
+                            <button className="btn calculate-btn" onClick={quickExpAndModStatsRequest}>
                                 Посчитать
                             </button>
                         </div>
@@ -209,7 +231,7 @@ const QuickExpPage = ()=>{
                             id="longGraph"
                             instance={longAlgStage}
                             width={800}
-                            height={600}
+                            height={300}
                             charts={[quickExpAndModChart]}
                         />
                     </div>
