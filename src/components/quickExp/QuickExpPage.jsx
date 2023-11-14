@@ -42,18 +42,23 @@ const QuickExpPage = ()=>{
     const [quickExpModGrStep, setQuickExpModGrStep] = useState(0)
     const [quickExpModGrCount, setQuickExpModGrCount] = useState(0)
     const [quickExpModChart , setQuickExpModChart] = useState(anychart.line())
+    const [hasQuickData, setHasQuickData] = useState(false)
+    const [loadingQuickData, setLoadingQuickData] = useState(false)
 
     quickExpModChart.bounds(1, 0, '100%', '100%');
     
     const quickExpModStatsRequest = async()=>{
         $.get(`http://localhost:8080/quickExpModStats?length=${quickExpModGrLen}&step=${quickExpModGrStep}&count=${quickExpModGrCount}`, 
         function(data){
+            setLoadingQuickData(true)
             var chartData = new Array()
             for(let i=0;i<data["quickTimes"].length;i++){
                 chartData.push([data["numsLength"][i], data["quickTimes"][i]])
             }
             quickExpModChart.removeAllSeries()
             quickExpModChart.line(chartData)
+            setLoadingQuickData(false)
+            setHasQuickData(true)
         });
     }
 
@@ -61,11 +66,14 @@ const QuickExpPage = ()=>{
     const [quickExpAndModGrStep, setQuickExpAndModGrStep] = useState(0)
     const [quickExpAndModGrCount, setQuickExpAndModGrCount] = useState(0)
     const [quickExpAndModChart , setQuickExpAndModChart] = useState(anychart.line())
+    const [hasLongData, setHasLongData] = useState(false)
+    const [loadingLongData, setLoadingLongData] = useState(false)
 
     quickExpAndModChart.bounds(1, 0, '100%', '100%');
     const quickExpAndModStatsRequest = async()=>{
         $.get(`http://localhost:8080/quickExpAndModStats?length=${quickExpAndModGrLen}&step=${quickExpAndModGrStep}&count=${quickExpAndModGrCount}`, 
         function(data){
+            setLoadingLongData(true)
             var quickChartData = new Array()
             var longChartData = new Array()
 
@@ -81,6 +89,8 @@ const QuickExpPage = ()=>{
             longSeries.name("(a^b) mod m")
             quickSeries.normal().stroke("#04b404");
             longSeries.normal().stroke("#ff2400");
+            setLoadingLongData(false)
+            setHasLongData(true)
         });
     }
 
@@ -190,14 +200,22 @@ const QuickExpPage = ()=>{
                         </div>
                     </div>
 
-                    <div className="col-9 graphics-area mt-3">
-                        <AnyChart
+                    <div className="col-9 graphics-area mt-3 text-center">
+                        {hasQuickData?(
+                            <AnyChart
                             id="quickGraph"
                             instance={quickAlgStage}
                             width={800}
                             height={300}
                             charts={[quickExpModChart]}
                         />
+                        ):(
+                            <span className="fw-bold" style={{color:"#fcfbfc"}}>
+                                {loadingQuickData?"Данные загружаются...":"Введите данные для подсчета"}
+                            </span>
+                            
+                        )}
+                        
                     </div>
                 </div>
             </div>
@@ -207,7 +225,22 @@ const QuickExpPage = ()=>{
 
             <div className="container-fluid">
                 <div className="row">
-
+                    <div className="col-9 graphics-area mt-3 text-center">
+                        {hasLongData?(
+                            <AnyChart
+                            id="longGraph"
+                            instance={longAlgStage}
+                            width={800}
+                            height={300}
+                            charts={[quickExpAndModChart]}
+                        />
+                        ):(
+                            <span className="fw-bold" style={{color:"#fcfbfc"}}>
+                                {loadingLongData?"Данные загружаются":"Введите данные для подсчёта"}
+                            </span>
+                        )}
+                        
+                    </div>
                     <div className="col-3 input-data-area">
                         <div className="input-data-fields mt-3">
                             <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>Введите данные<br/></span>
@@ -224,16 +257,6 @@ const QuickExpPage = ()=>{
                                 Посчитать
                             </button>
                         </div>
-                    </div>
-
-                    <div className="col-9 graphics-area mt-3">
-                        <AnyChart
-                            id="longGraph"
-                            instance={longAlgStage}
-                            width={800}
-                            height={300}
-                            charts={[quickExpAndModChart]}
-                        />
                     </div>
                 </div>
             </div>
