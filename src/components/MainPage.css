@@ -2,3 +2,10 @@
     display: flex;
     flex-direction: column;
 }
+
+.lab-res-link{
+    font-size: 25px;
+    font-weight: 500;
+
+    color: black;
+}

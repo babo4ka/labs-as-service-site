@@ -98,7 +98,7 @@ const QuickExpPage = ()=>{
 
     return(
         <div>
-            <Header/>
+            <a href="/" className="return-to-main-btn">Вернуться на главную</a>
             <h4 className="mt-3">Решение задачи про быстрое возведение в степень</h4>
 
             <div className="container mt-3">
