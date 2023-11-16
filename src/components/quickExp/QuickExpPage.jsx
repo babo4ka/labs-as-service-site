@@ -103,6 +103,8 @@ const QuickExpPage = ()=>{
         quickExpAndModChart.yAxis().title("время выполнения алгоритма в наносекундах")
 
         quickExpAndModChart.background().fill("rgba(189, 189, 189, 0)")
+
+        document.body.style.background = "linear-gradient(to right, rgba(2,0,107,1), rgba(181,1,193,1))"
     })
 
     const copyAnswer = (text)=>{

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import "./PrimeChecker.css"
 import $ from 'jquery'
+
+
 const PrimeCheckerPage = () =>{
 
     const[answer, setAnswer] = useState("")
@@ -26,28 +28,31 @@ const PrimeCheckerPage = () =>{
             setFile(file)
             $(this).next().html(file.name);
         });
+
+        document.body.style.background = "linear-gradient(to right, rgba(93,18,1,1), rgba(181,1,193,1))"
     })
 
+    const[fileFetchAnswer, serFileFetchAnswer] = useState(null)
+    const[colContentCount, setColContentCount] = useState(0)
     const fetchPrimeForFile = async () =>{
-        var formData = new FormData()
+        serFileFetchAnswer(null)
+        const formData = new FormData()
         console.log(file)
         
         formData.append('file', file)
 
-        await fetch("http://localhost:8080/arePrime",{
-            body: formData,
-            method:"post"
-        }).then(response =>{
-            console.log(response)
+
+        $.ajax({
+            url:"http://localhost:8080/arePrime",
+            data: formData,
+            type:"post",
+            contentType: false, 
+            processData: false,
+            success:function(data){
+                serFileFetchAnswer(data)
+                setColContentCount(Math.ceil(data.length/3))
+            }
         })
-        // $.ajax({
-        //     url:"http://localhost:8080/arePrime",
-        //     data: formData,
-        //     type:"post",
-        //     contentType: false, 
-        //     processData: false,
-        //     enctype:"multipart/form-data"
-        // })
     }
 
     return(
@@ -106,17 +111,30 @@ const PrimeCheckerPage = () =>{
                     </div>
 
                     <div className="col-8 row answers_container">
-                        <div className="col-3">
+                        {fileFetchAnswer==null?(
+                            <span className="text-center mt-3 fw-bold" style={{color:"#fcfbfc"}}>Здесь будут отображаться ответы</span>
+                        ):(
+                            <table className="mt-5">
+                                <th >
+                                    {fileFetchAnswer.slice(0, colContentCount).map((item, index) =>(
+                                        <tr >{`${item["num"]}${item["rounds"]==null?"":" раунды: " + item["rounds"]} ${item["answer"]}`}</tr>
+                                    ))}
+                                </th>
 
-                        </div>
+                                <th>
+                                    {fileFetchAnswer.slice(colContentCount, colContentCount * 2).map((item, index) =>(
+                                        <tr>{`${item["num"]}${item["rounds"]==null?"":" раунды: " + item["rounds"]} ${item["answer"]}`}</tr>
+                                    ))}
+                                </th>
 
-                        <div className="col-3">
-
-                        </div>
-
-                        <div className="col-3">
-
-                        </div>
+                                <th>
+                                    {fileFetchAnswer.slice(colContentCount*2).map((item, index)=>(
+                                        <tr>{`${item["num"]}${item["rounds"]==null?"":" раунды: " + item["rounds"]} ${item["answer"]}`}</tr>
+                                    ))}
+                                </th>
+                            </table>
+                        )}
+                        
                     </div>
                 </div>
             </div>
