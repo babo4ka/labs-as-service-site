@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import Header from "../header/Header"
 import "./QuickExp.css"
 import $ from "jquery"
 import AnyChart from "anychart-react"
