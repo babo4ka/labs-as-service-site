@@ -21,6 +21,15 @@ const PrimeCheckerPage = () =>{
         $("#isPrimeAnswer").removeClass("answer-field-hidden")
     }
 
+    const[generatedNum, setGeneratedNum] = useState(0)
+    const generatePrimeNum = ()=>{
+        $.get(`http://localhost:8080/generatePrime?length=${$("#len_inp").val()}`, function(data){
+            setGeneratedNum(data)
+        })
+
+        $("#generatePrimeAnswer").removeClass("answer-field-hidden")
+    }
+
     const[file, setFile] = useState(null)
     useEffect(()=>{
         $('.input-file input[type=file]').on('change', function(){
@@ -55,15 +64,19 @@ const PrimeCheckerPage = () =>{
         })
     }
 
+    const copyAnswer = (text)=>{
+        navigator.clipboard.writeText(text)
+    }
+
     return(
         <div id="primeCheckPage">
             <a href="/" className="return-to-main-btn">&larr; Вернуться на главную</a>
 
             <h4 className="mt-3 text-center" style={{color:"#fcfbfc"}}>Проверка числа на простоту</h4>
 
-            <div className="container mt-5 prime-check-container">
+            <div className="container mt-5 ">
                 <div className="row justify-content-center mx-auto">
-                    <div className="col-12">
+                    <div className="col-6 prime-check-container">
                         <div className="col-12 text-center">
                             <span className="fw-bold" style={{color:"#fcfbfc"}}>Введите число и (если хотите) количество раундов</span>
                         </div>
@@ -80,6 +93,31 @@ const PrimeCheckerPage = () =>{
                         <div className="col-12 mt-2 mb-2">
                             <button className="btn calculate-btn" onClick={fetchCheckPrime}>
                                 Проверить
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="col-6 prime-check-container">
+                        <div className="col-12 text-center">
+                            <span className="fw-bold" style={{color:"#fcfbfc"}}>Введите длину числа для генерации</span>
+                        </div>
+
+                        <div className="col-12 row justify-content-center mx-auto mt-3">
+                            <input id="len_inp" type="number" placeholder="длина" className="col-4 arg-inp"/>
+                        </div>
+
+                        <div className="col-12 answer-field-hidden" id="generatePrimeAnswer">
+                            <span className="text-wrap" style={{color:"#fcfbfc"}}>{generatedNum.toString(10).length>15?
+                            generatedNum.toString(10).substring(0,15) + "...":generatedNum}</span>
+                        </div>
+
+                        <div className="col-12 mt-2 mb-2">
+                            <button className="btn calculate-btn" onClick={generatePrimeNum}>
+                                Сгенерировать
+                            </button>
+
+                            <button className="btn calculate-btn" onClick={()=>copyAnswer(generatedNum)}>
+                                Копировать ответ
                             </button>
                         </div>
                     </div>

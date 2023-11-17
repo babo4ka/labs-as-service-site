@@ -5,10 +5,11 @@
 
 
 .prime-check-container{
-    width: 500px;
+    width: 400px;
     text-align: center;
     border-radius: 15px;
     box-shadow: 0px 2px 15px black;
+	margin: 15px;
 }
 
 .file_inp_container{
