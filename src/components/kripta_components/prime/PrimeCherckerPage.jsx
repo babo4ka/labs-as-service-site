@@ -38,7 +38,7 @@ const PrimeCheckerPage = () =>{
             $(this).next().html(file.name);
         });
 
-        document.body.style.background = "linear-gradient(to right, rgba(93,18,1,1), rgba(181,1,193,1))"
+        document.body.style.background = "linear-gradient(135deg, rgba(93,18,1,1), rgba(181,1,193,1))"
     })
 
     const[fileFetchAnswer, serFileFetchAnswer] = useState(null)
@@ -124,7 +124,7 @@ const PrimeCheckerPage = () =>{
                 </div>
             </div>
 
-            <hr size="4" className="mt-5"/>
+            <hr className="mt-5 mb-5 center-line"/>
             <h4 className="mt-3 text-center" style={{color:"#fcfbfc"}}>Проверка чисел из текстового файла</h4>
 
             <div className="container-fluid">

@@ -9,3 +9,26 @@
 
     color: black;
 }
+
+.line-top{
+    border-top: 5px solid black;
+    box-shadow: 10px 15px 15px 5px black;
+}
+
+.line-buttom{
+    border-top: 5px solid black;
+    box-shadow: 10px -15px 15px 5px black;
+}
+
+.right-line{
+    width: 35%;
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.left-line{
+    width: 35%;
+    margin-right: auto;
+    margin-left: 50px;
+   
+}

@@ -21,9 +21,10 @@ input::-webkit-inner-spin-button {
 
 
 .calculate-btn{
-    background-color: rgb(55, 67, 240);
+    background-color: rgba(198, 199, 204, 0.144);
     color: white;
     margin: 5px;
+    border: 1px solid white;
 }
 
 .answer-field-hidden{
@@ -37,10 +38,6 @@ input::-webkit-inner-spin-button {
 }
 
 
-.graphics-area{
-    /* border-radius: 15px;
-    box-shadow: 0px 2px 15px black; */
-}
 
 .return-to-main-btn{
     text-decoration: none;
@@ -66,4 +63,11 @@ input{
     border: 1px solid #bdbdbd;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.center-line{
+    margin: auto;
+    width: 60%;
+    border-top: 5px solid black;
+    box-shadow: 0 15px 15px 5px black;
 }

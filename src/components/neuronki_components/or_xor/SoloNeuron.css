@@ -1,0 +1,14 @@
+.operate-container{
+    width: 400px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0px 2px 15px black;
+	margin: 15px;
+}
+
+.start-operating-area{
+    border-radius: 15px;
+    box-shadow: 0px 2px 15px black;
+    text-align: center;
+    max-height: 200px;
+}

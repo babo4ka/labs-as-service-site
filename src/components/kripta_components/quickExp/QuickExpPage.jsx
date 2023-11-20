@@ -104,7 +104,7 @@ const QuickExpPage = ()=>{
 
         quickExpAndModChart.background().fill("rgba(189, 189, 189, 0)")
 
-        document.body.style.background = "linear-gradient(to right, rgba(2,0,107,1), rgba(181,1,193,1))"
+        document.body.style.background = "linear-gradient(135deg, rgba(2,0,107,1), rgba(181,1,193,1))"
     })
 
     const copyAnswer = (text)=>{
@@ -177,7 +177,7 @@ const QuickExpPage = ()=>{
             </div>
 
         
-            <hr size="4" className="mt-5"/>
+            <hr className="mt-5 mb-5 center-line"/>
             <h3 className="text-center" style={{color:"#fcfbfc"}}>График времени выполнения алгоритма в зависимости от битовой длины числа</h3>
 
             <div className="container-fluid">
@@ -221,7 +221,7 @@ const QuickExpPage = ()=>{
                 </div>
             </div>
 
-            <hr size="4" className="mt-5"/>
+            <hr className="mt-5 mb-5 center-line"/>
             <h3 className="text-center" style={{color:"#fcfbfc"}}>График сравнения времени выполнения алгоритмов</h3>
 
             <div className="container-fluid">
