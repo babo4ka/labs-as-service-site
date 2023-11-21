@@ -110,8 +110,6 @@ const SoloNeuronPage = () =>{
                 value:dot[1]
             }))
             
-            console.log(dots0)
-            console.log(dots1)
             xorChart.removeAllSeries()
             var series0 = xorChart.marker(dots0)
             var series1 = xorChart.marker(dots1)

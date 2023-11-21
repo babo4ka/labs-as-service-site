@@ -4,16 +4,6 @@ import "./MainPage.css"
 
 const MainPage = ()=>{
 
-    const subjects = [
-        {
-            name:"Быстрое возведение в степень",
-            link:"/quickExp"
-        },
-        {
-            name:"Алгоритм Миллера-Рабина",
-            link:"/primeCheck"
-        }
-    ]
 
     return(
         <div>
@@ -85,7 +75,7 @@ const MainPage = ()=>{
                     <div className="col-12 row one-task-holder justify-content-center align-items-center">
                         <h2 className="col-12 text-end text-wrap">Вычисление градиента и градиентного спуска</h2>
                         <div className="col-6 row justify-content-center mt-5">
-                            <a href="/primeCheck" className="text-center lab-res-link">Посмотреть результаты &rarr;</a>
+                            <a href="/gradient" className="text-center lab-res-link">Посмотреть результаты &rarr;</a>
                         </div>
                         
                         <div className="col-6 info_about_task mt-5">
