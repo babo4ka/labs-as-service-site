@@ -3,7 +3,7 @@ import "./Header.css"
 const Header = () =>{
 
     return(
-        <div className="container-fluid header">
+        <div className="container-fluid header" id="header">
             <div className="row align-items-center">
                 <div className="col-12 row mt-3 align-items-center">
                     <h3 className="col-lg-8 col-12 text-wrap text-center">Что-то типо моих лабораторных работ</h3>
