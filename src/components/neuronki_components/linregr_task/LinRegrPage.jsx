@@ -7,6 +7,7 @@ import anychart from 'anychart'
 const LinRegrPage = ()=>{
 
     useEffect(() =>{
+        linregChart.background().fill("rgba(189, 189, 189, 0)")
         document.body.style.background = "linear-gradient(135deg, rgba(1,89,93,1), rgba(143,29,208,1))"
     })
 
@@ -34,8 +35,18 @@ const LinRegrPage = ()=>{
     const linregStage = anychart.graphics.create()
     const linregChart = anychart.scatter()
     const operateLinRegr = () =>{
-        var array = Array.from({length: parseInt($("#count-for-linreg-inp").val())}, ()=> 
-        Math.round((Math.random() + Number.EPSILON) * 100) / 100)
+        var start = -10
+        var end = 10
+        var arrLength = parseInt($("#count-for-linreg-inp").val())
+        var step = (end - start) / arrLength
+        var current = start
+
+        var array = Array.from({length: arrLength}, ()=>{
+            var num = current
+            current += step
+            return num
+        })
+
 
         const expect = array.map(el => func(el))
 
@@ -43,11 +54,26 @@ const LinRegrPage = ()=>{
 
         $.get(`http://localhost:8080/operateLinRegr?x=${x}`, function(data){
             data = JSON.parse(data)
-            console.log(array)
-            console.log(expect)
-            console.log(data["answers"])
-        })
 
+            const actualDots = data["answers"].map((answer, index) =>({
+                x:array[index],
+                value:answer
+            }))
+    
+            const expectDots = expect.map((ex, index) => ({
+                x:array[index],
+                value:ex
+            }))
+    
+            linregChart.removeAllSeries()
+            linregChart.legend(true)
+            var seriesActual = linregChart.marker(actualDots)
+            var sereisExpect = linregChart.marker(expectDots)
+            seriesActual.normal().fill("red")
+            sereisExpect.normal().fill("green")
+            seriesActual.name("полученные значения")
+            sereisExpect.name("ожидаемые значения")
+        })
     }
 
 
@@ -112,10 +138,10 @@ const LinRegrPage = ()=>{
                     <div className="col-9 mt-3 text-center">
                         <AnyChart
                             id="linregrGraph"
-                            // instance={orStage}
-                            // width={800}
-                            // height={500}
-                            // charts={[orChart]}
+                            instance={linregStage}
+                            width={800}
+                            height={500}
+                            charts={[linregChart]}
                         />
                     </div>
                 </div>
