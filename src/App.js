@@ -11,6 +11,7 @@ import QuickExpPage from "./components/kripta_components/quickExp/QuickExpPage"
 import PrimeCheckerPage from './components/kripta_components/prime/PrimeCherckerPage';
 import SoloNeuronPage from './components/neuronki_components/or_xor/SoloNeuronPage'
 import GradientPage from './components/neuronki_components/grad_task/GradientPage';
+import LinRegrPage from './components/neuronki_components/linregr_task/LinRegrPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/primeCheck" element={<PrimeCheckerPage/>}/>
         <Route exact path="/soloNeuron" element={<SoloNeuronPage/>}/>
         <Route exact path="/gradient" element={<GradientPage/>}/>
+        <Route exact path="/linregr" element={<LinRegrPage/>}/>
       </Routes>
     </Router>
   );

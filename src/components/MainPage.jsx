@@ -96,7 +96,7 @@ const MainPage = ()=>{
                             дадад))00)<br/> 
                             </span>
                             <div className="col-6 row justify-content-center">
-                                <a href="/quickExp" className="text-center lab-res-link">Посмотреть результаты &rarr;</a>
+                                <a href="/linregr" className="text-center lab-res-link">Посмотреть результаты &rarr;</a>
                             </div>
                         </div>
                     </div>
