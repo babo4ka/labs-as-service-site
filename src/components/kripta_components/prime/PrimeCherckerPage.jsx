@@ -38,7 +38,7 @@ const PrimeCheckerPage = () =>{
             $(this).next().html(file.name);
         });
 
-        document.body.style.background = "linear-gradient(135deg, rgba(93,18,1,1), rgba(181,1,193,1))"
+        document.body.style.background = "black"
     })
 
     const[fileFetchAnswer, serFileFetchAnswer] = useState(null)

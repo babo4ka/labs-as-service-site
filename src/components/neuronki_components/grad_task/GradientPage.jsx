@@ -5,7 +5,7 @@ import $ from 'jquery'
 const GradientPage = () =>{
 
     useEffect(()=>{
-        document.body.style.background = "linear-gradient(135deg, rgba(1,89,93,1), rgba(143,29,208,1))"
+        document.body.style.background = "black"
     })
 
 
@@ -54,16 +54,16 @@ const GradientPage = () =>{
                             </div>
 
                             <div className="col-12 row justify-content-center mx-auto mt-3">
-                                <h1 className="col-1">[</h1>
-                                <h1 className="col-1">[</h1>
+                                <h1 style={{color:"#fcfbfc"}}  className="col-1">[</h1>
+                                <h1 style={{color:"#fcfbfc"}} className="col-1">[</h1>
                                 <input id="dot1-inp" min="0" max="1" type="number" placeholder="dot1" className="col-4 arg-inp"/>
                                 <input id="dot2-inp" min="0" max="1" type="number" placeholder="dot2" className="col-4 arg-inp"/>
-                                <h1 className="col-1">],</h1>
-                                <h1 className="col-1">[</h1>
+                                <h1 style={{color:"#fcfbfc"}} className="col-1">],</h1>
+                                <h1 style={{color:"#fcfbfc"}} className="col-1">[</h1>
                                 <input id="dot3-inp" min="0" max="1" type="number" placeholder="dot3" className="col-4 arg-inp"/>
                                 <input id="dot4-inp" min="0" max="1" type="number" placeholder="dot4" className="col-4 arg-inp"/>
-                                <h1 className="col-1">]</h1>
-                                <h1 className="col-1">]</h1>
+                                <h1 style={{color:"#fcfbfc"}} className="col-1">]</h1>
+                                <h1 style={{color:"#fcfbfc"}} className="col-1">]</h1>
                             </div>
 
                             <div className="col-12 row justify-content-center mx-auto mt-3">

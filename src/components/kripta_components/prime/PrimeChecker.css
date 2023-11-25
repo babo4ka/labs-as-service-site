@@ -2,14 +2,14 @@
     width: 400px;
     text-align: center;
     border-radius: 15px;
-    box-shadow: 0px 2px 15px black;
+    box-shadow: 0px 2px 15px white;
 	margin: 15px;
 }
 
 .file_inp_container{
     text-align: center;
     border-radius: 15px;
-    box-shadow: 0px 2px 15px black;
+    box-shadow: 0px 2px 15px white;
 }
 
 

@@ -104,8 +104,22 @@ const QuickExpPage = ()=>{
 
         quickExpAndModChart.background().fill("rgba(189, 189, 189, 0)")
 
-        document.body.style.background = "linear-gradient(135deg, rgba(2,0,107,1), rgba(181,1,193,1))"
+        document.body.style.background = "black"
+
+        var elems = document.getElementsByClassName("calculate-btn")
+  
+       Array.from(elems).forEach(el => {
+            el.addEventListener("mousemove", fCardRotate);
+            el.addEventListener("mouseout", fCardDefault);
+        });
     })
+
+    function fCardRotate(ev) {
+        this.style.transform = `perspective(2000px) rotatey(${(ev.offsetX - this.offsetWidth / 2)}deg) rotatex(${((ev.offsetY - this.offsetHeight / 2)) * -1}deg)`;
+      }
+      function fCardDefault() {
+        this.style.transform = ``;
+      }
 
     const copyAnswer = (text)=>{
         navigator.clipboard.writeText(text)

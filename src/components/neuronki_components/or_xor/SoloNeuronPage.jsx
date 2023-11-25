@@ -9,7 +9,7 @@ const SoloNeuronPage = () =>{
     useEffect(()=>{
         orChart.background().fill("rgba(189, 189, 189, 0)")
         xorChart.background().fill("rgba(189, 189, 189, 0)")
-        document.body.style.background = "linear-gradient(135deg, rgba(1,89,93,1), rgba(143,29,208,1))"
+        document.body.style.background = "black"
     })
 
 
@@ -78,7 +78,7 @@ const SoloNeuronPage = () =>{
             var series0 = orChart.marker(dots0)
             var series1 = orChart.marker(dots1)
             var line = orChart.line([[0, 0.5], [0.5, 0]])
-            line.normal().stroke("#000000")
+            line.normal().stroke("#FFFFFF")
             series0.normal().fill("red")
             series1.normal().fill("green")
         })
@@ -115,8 +115,8 @@ const SoloNeuronPage = () =>{
             var series1 = xorChart.marker(dots1)
             var line1 = xorChart.line([[0, 0.5], [0.5, 0]])
             var line2 = xorChart.line([[0.5, 1], [1, 0.5]])
-            line1.normal().stroke("#000000")
-            line2.normal().stroke("#000000")
+            line1.normal().stroke("#FFFFFF")
+            line2.normal().stroke("#FFFFFF")
             series0.normal().fill("red")
             series1.normal().fill("green")
         })

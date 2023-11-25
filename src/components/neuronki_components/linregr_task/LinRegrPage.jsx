@@ -8,7 +8,7 @@ const LinRegrPage = ()=>{
 
     useEffect(() =>{
         linregChart.background().fill("rgba(189, 189, 189, 0)")
-        document.body.style.background = "linear-gradient(135deg, rgba(1,89,93,1), rgba(143,29,208,1))"
+        document.body.style.background = "black"
     })
 
     const [linregrAnswer, setLinRegrAnswer] = useState(0)
