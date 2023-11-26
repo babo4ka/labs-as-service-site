@@ -8,8 +8,8 @@
 
 
 .info-field{
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 
     font-size: 25px;
     font-weight: 500;
@@ -25,9 +25,15 @@
 }
 
 #name_{
-    font-size: 65px;
-    margin-left: 45px;
+    font-size: 25px;
     vertical-align: middle;
+}
+
+@media (min-width:768px) {
+    #name_{
+        font-size: 65px;
+        vertical-align: middle;
+    }
 }
 
 #about{

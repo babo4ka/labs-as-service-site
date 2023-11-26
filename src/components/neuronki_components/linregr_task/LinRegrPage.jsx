@@ -134,7 +134,7 @@ const LinRegrPage = ()=>{
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-3 start-operating-area-linregr">
+                    <div className="col-12 col-md-3 start-operating-area-linregr">
                         <div className="input-data-info text-center">
                             <span className="col-12  fw-bold" style={{color:"#fcfbfc"}}>Мы сгенерируем введённое количество значений<br/>
                             и отобразим на графике сравнение между предсказанными и ожидаемыми ответами</span>
@@ -149,7 +149,7 @@ const LinRegrPage = ()=>{
                         </button>
                     </div>
 
-                    <div className="col-9 mt-3 text-center">
+                    <div className="col-12 col-md-9 mt-3 text-center">
                         <AnyChart
                             id="linregrGraph"
                             instance={linregStage}

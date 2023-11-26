@@ -140,7 +140,7 @@ const PrimeCheckerPage = () =>{
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-4">
+                    <div className="col-12 col-md-4">
                         <div id="file_nums_form" className="col-12 file_inp_container mt-5">
                             <div className="col-12 mt-3 mb-3">
                                 <span className="text-wrap fw-bold" style={{color:"#fcfbfc"}}>Выберите файл</span>
@@ -159,7 +159,7 @@ const PrimeCheckerPage = () =>{
                         </div>
                     </div>
 
-                    <div className="col-8 row answers_container">
+                    <div className="col-12 col-md-8 row answers_container">
                         {fileFetchAnswer==null?(
                             <span className="text-center mt-3 fw-bold" style={{color:"#fcfbfc"}}>Здесь будут отображаться ответы</span>
                         ):(

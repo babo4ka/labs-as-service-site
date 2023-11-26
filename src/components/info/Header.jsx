@@ -11,14 +11,14 @@ const Header = () =>{
                 </div>
 
 
-                <div className="col-lg-6 col-12 mt-5">
+                <div className="col-lg-6 col-12 mt-5 text-center">
                     <div className="info-field">
-                        <span id="name_" className="text-wrap text-center">Иванов Евгений Александрович</span>
+                        <span id="name_" className="text-center">Иванов Евгений Александрович</span>
                     </div>
                 </div>
 
                 <div className="col-lg-6 col-12 mt-5">
-                    <span id="about" className="text-center text-wrap">Студент 3 курса Казанского Федерального Университета<br/>
+                    <span id="about" className="text-center">Студент 3 курса Казанского Федерального Университета<br/>
                     Институт вычислительной математики и информационных технологий<br/>
                     Направление подготовки: прикладаня информатика<br/>
                     На удивление всё ещё не отчислен</span>

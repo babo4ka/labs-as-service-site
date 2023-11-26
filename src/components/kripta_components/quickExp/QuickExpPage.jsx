@@ -96,6 +96,7 @@ const QuickExpPage = ()=>{
         });
     }
 
+
     useEffect(()=>{
         quickExpModChart.xAxis().title("битовая длина числа")
         quickExpModChart.yAxis().title("время выполнения алгоритма в наносекундах")
@@ -197,7 +198,7 @@ const QuickExpPage = ()=>{
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-3 input-data-area">
+                    <div className="col-12 col-md-3 input-data-area">
                         <div className="input-data-fields mt-3">
                             <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>Введите данные<br/></span>
                             <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>l - длина первого числа в битах<br/></span>
@@ -216,7 +217,7 @@ const QuickExpPage = ()=>{
                         </div>
                     </div>
 
-                    <div className="col-9 graphics-area mt-3 text-center">
+                    <div className="col-12 col-md-9 graphics-area mt-3 text-center">
                         {hasQuickData?(
                             <AnyChart
                             id="quickGraph"
@@ -241,7 +242,7 @@ const QuickExpPage = ()=>{
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-9 graphics-area mt-3 text-center">
+                    <div className="col-12 col-md-9 graphics-area mt-3 text-center">
                         {hasLongData?(
                             <AnyChart
                             id="longGraph"
@@ -257,7 +258,7 @@ const QuickExpPage = ()=>{
                         )}
                         
                     </div>
-                    <div className="col-3 input-data-area">
+                    <div className="col-12 col-md-3 input-data-area">
                         <div className="input-data-fields mt-3">
                             <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>Введите данные<br/></span>
                             <span className="col-12 fw-bold" style={{color:"#fcfbfc"}}>l - длина первого числа в битах<br/></span>

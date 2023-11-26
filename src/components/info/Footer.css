@@ -25,3 +25,15 @@
 .contact-line:nth-child(odd){
     border-left: 3px solid black;
 }
+
+#name_dupl{
+    font-size: 25px;
+    vertical-align: middle;
+}
+
+@media (min-width:768px) {
+    #name_dupl{
+        font-size: 65px;
+        vertical-align: middle;
+    }
+}

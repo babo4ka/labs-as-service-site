@@ -198,7 +198,7 @@ const SoloNeuronPage = () =>{
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-3 start-operating-area">
+                    <div className="col-12 col-md-3 start-operating-area">
                         <div className="input-data-info text-center">
                             <span className="col-12  fw-bold" style={{color:"#fcfbfc"}}>Мы сгенерируем введённое количество значений x1 и x2<br/>
                             и отобразим их на графике</span>
@@ -213,7 +213,7 @@ const SoloNeuronPage = () =>{
                         </button>
                     </div>
 
-                    <div className="col-9 mt-3 text-center">
+                    <div className="col-12 col-md-9 mt-3 text-center">
                         <AnyChart
                             id="orGraph"
                             instance={orStage}
@@ -231,7 +231,7 @@ const SoloNeuronPage = () =>{
             <div className="container-fluid">
                 <div className="row">
 
-                    <div className="col-9 mt-3 text-center">
+                    <div className="col-12 col-md-9 mt-3 text-center">
                         <AnyChart
                             id="xorGraph"
                             instance={xorStage}
@@ -241,7 +241,7 @@ const SoloNeuronPage = () =>{
                         />
                     </div>
 
-                    <div className="col-3 start-operating-area">
+                    <div className="col-12 col-md-3 start-operating-area">
                         <div className="input-data-info text-center">
                             <span className="col-12  fw-bold" style={{color:"#fcfbfc"}}>Мы сгенерируем введённое количество значений x1 и x2<br/>
                             и отобразим их на графике</span>
