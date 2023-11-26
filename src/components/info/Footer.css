@@ -1,0 +1,27 @@
+.contact-link{
+    text-decoration: none;
+    color: black;
+
+    font-size: 20px;
+}
+
+#footer{
+    border-top: 3px solid black;
+
+    margin-bottom: 150px;
+}
+
+.contact-line{
+    border-bottom: 3px solid black;
+
+    margin-bottom: 15px;
+
+}
+
+.contact-line:nth-child(even){
+    border-right: 3px solid black;
+}
+
+.contact-line:nth-child(odd){
+    border-left: 3px solid black;
+}

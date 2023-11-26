@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import "./PrimeChecker.css"
 import $ from 'jquery'
-
+import { copyAnswer } from "../../utils_funcs"
 
 const PrimeCheckerPage = () =>{
 
@@ -39,6 +39,13 @@ const PrimeCheckerPage = () =>{
         });
 
         document.body.style.background = "black"
+
+        var elems = document.getElementsByClassName("calculate-btn")
+  
+        Array.from(elems).forEach(el => {
+             el.addEventListener("mousemove", fCardRotate);
+             el.addEventListener("mouseout", fCardDefault);
+         });
     })
 
     const[fileFetchAnswer, serFileFetchAnswer] = useState(null)
@@ -64,8 +71,12 @@ const PrimeCheckerPage = () =>{
         })
     }
 
-    const copyAnswer = (text)=>{
-        navigator.clipboard.writeText(text)
+    function fCardRotate(ev) {
+        this.style.transform = `perspective(2000px) rotatey(${(ev.offsetX - this.offsetWidth / 2)}deg) rotatex(${((ev.offsetY - this.offsetHeight / 2)) * -1}deg)`;
+    }
+    
+    function fCardDefault() {
+        this.style.transform = ``;
     }
 
     return(

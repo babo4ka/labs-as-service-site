@@ -3,6 +3,9 @@ import "./QuickExp.css"
 import $ from "jquery"
 import AnyChart from "anychart-react"
 import anychart from 'anychart'
+import { copyAnswer} from "../../utils_funcs"
+
+
 
 const QuickExpPage = ()=>{
 
@@ -116,14 +119,12 @@ const QuickExpPage = ()=>{
 
     function fCardRotate(ev) {
         this.style.transform = `perspective(2000px) rotatey(${(ev.offsetX - this.offsetWidth / 2)}deg) rotatex(${((ev.offsetY - this.offsetHeight / 2)) * -1}deg)`;
-      }
-      function fCardDefault() {
-        this.style.transform = ``;
-      }
-
-    const copyAnswer = (text)=>{
-        navigator.clipboard.writeText(text)
     }
+    
+    function fCardDefault() {
+        this.style.transform = ``;
+    }
+
 
     return(
         <div id="quickExpPage">

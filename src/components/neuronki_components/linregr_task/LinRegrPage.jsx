@@ -9,6 +9,13 @@ const LinRegrPage = ()=>{
     useEffect(() =>{
         linregChart.background().fill("rgba(189, 189, 189, 0)")
         document.body.style.background = "black"
+
+        var elems = document.getElementsByClassName("calculate-btn")
+  
+        Array.from(elems).forEach(el => {
+             el.addEventListener("mousemove", fCardRotate);
+             el.addEventListener("mouseout", fCardDefault);
+         });
     })
 
     const [linregrAnswer, setLinRegrAnswer] = useState(0)
@@ -76,6 +83,13 @@ const LinRegrPage = ()=>{
         })
     }
 
+    function fCardRotate(ev) {
+        this.style.transform = `perspective(2000px) rotatey(${(ev.offsetX - this.offsetWidth / 2)}deg) rotatex(${((ev.offsetY - this.offsetHeight / 2)) * -1}deg)`;
+    }
+    
+    function fCardDefault() {
+        this.style.transform = ``;
+    }
 
     return(
         <div id="linRegrPage">
