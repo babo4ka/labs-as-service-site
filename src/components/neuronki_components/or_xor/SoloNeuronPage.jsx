@@ -4,7 +4,7 @@ import $ from 'jquery'
 import AnyChart from "anychart-react"
 import anychart from 'anychart'
 
-const SoloNeuronPage = () =>{
+const SoloNeuronPage = ({anotherTasks}) =>{
 
     useEffect(()=>{
         orChart.background().fill("rgba(189, 189, 189, 0)")
@@ -141,7 +141,19 @@ const SoloNeuronPage = () =>{
 
     return(
         <div id="soloNeuronPage">
-            <a href="/" className="return-to-main-btn">&larr; Вернуться на главную</a>
+            <div className="container-fluid">
+                <div className="row text-center text-md-start">
+                    <div className="col-12">
+                        <a href="/" className="return-to-main-btn">&larr; Вернуться на главную</a>
+                    </div>
+                    
+                    <div className="col-12 mt-3">
+                        <a href={`${anotherTasks[0].link}`} className="another-task-btn">{anotherTasks[0].name} &rarr;</a>
+                        <a href={`${anotherTasks[1].link}`} className="another-task-btn">{anotherTasks[1].name} &rarr;</a>
+                    </div>
+                    
+                </div>
+            </div>
 
             <div className="container mt-5">
                 <div className="row justify-content-center mx-auto">

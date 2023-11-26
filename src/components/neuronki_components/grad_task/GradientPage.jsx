@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import "./GradientPage.css"
 import $ from 'jquery'
 
-const GradientPage = () =>{
+const GradientPage = ({anotherTasks}) =>{
 
     useEffect(()=>{
         document.body.style.background = "black"
@@ -48,7 +48,19 @@ const GradientPage = () =>{
 
     return(
         <div id="gradientPage">
-            <a href="/" className="return-to-main-btn">&larr; Вернуться на главную</a>
+            <div className="container-fluid">
+                <div className="row text-center text-md-start">
+                    <div className="col-12">
+                        <a href="/" className="return-to-main-btn">&larr; Вернуться на главную</a>
+                    </div>
+                    
+                    <div className="col-12 mt-3">
+                        <a href={`${anotherTasks[0].link}`} className="another-task-btn">{anotherTasks[0].name} &rarr;</a>
+                        <a href={`${anotherTasks[1].link}`} className="another-task-btn">{anotherTasks[1].name} &rarr;</a>
+                    </div>
+                    
+                </div>
+            </div>
 
 
             <div className="container mt-5">

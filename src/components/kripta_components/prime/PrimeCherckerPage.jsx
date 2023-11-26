@@ -3,7 +3,7 @@ import "./PrimeChecker.css"
 import $ from 'jquery'
 import { copyAnswer } from "../../utils_funcs"
 
-const PrimeCheckerPage = () =>{
+const PrimeCheckerPage = ({anotherTasks}) =>{
 
     const[answer, setAnswer] = useState("")
 
@@ -81,7 +81,18 @@ const PrimeCheckerPage = () =>{
 
     return(
         <div id="primeCheckPage">
-            <a href="/" className="return-to-main-btn">&larr; Вернуться на главную</a>
+           <div className="container-fluid">
+                <div className="row text-center text-md-start">
+                    <div className="col-12">
+                        <a href="/" className="return-to-main-btn">&larr; Вернуться на главную</a>
+                    </div>
+                    
+                    <div className="col-12 mt-3">
+                        <a href={`${anotherTasks[0].link}`} className="another-task-btn">{anotherTasks[0].name} &rarr;</a>
+                    </div>
+                    
+                </div>
+            </div>
 
             <h4 className="mt-3 text-center" style={{color:"#fcfbfc"}}>Проверка числа на простоту</h4>
 

@@ -18,11 +18,14 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<MainPage/>}/>
-        <Route exact path="/quickExp" element={<QuickExpPage/>}/>
-        <Route exact path="/primeCheck" element={<PrimeCheckerPage/>}/>
-        <Route exact path="/soloNeuron" element={<SoloNeuronPage/>}/>
-        <Route exact path="/gradient" element={<GradientPage/>}/>
-        <Route exact path="/linregr" element={<LinRegrPage/>}/>
+        <Route exact path="/quickExp" element={<QuickExpPage anotherTasks={[{link:"/primeCheck", name:"Алгоритм Миллера-Рабина"}]}/>}/>
+        <Route exact path="/primeCheck" element={<PrimeCheckerPage anotherTasks={[{link:"/quickExp", name:"Алгоритм быстрого возведения в степень"}]}/>}/>
+        <Route exact path="/soloNeuron" 
+        element={<SoloNeuronPage anotherTasks={[{link:"/gradient", name:"Градиент"} ,{link:"/linregr", name:"Линейная регресия"}]}/>}/>
+        <Route exact path="/gradient" 
+          element={<GradientPage anotherTasks={[{link:"/soloNeuron", name:"Нейрон OR и XOR"} ,{link:"/linregr", name:"Линейная регресия"}]}/>}/>
+        <Route exact path="/linregr" 
+        element={<LinRegrPage anotherTasks={[{link:"/soloNeuron", name:"Нейрон OR и XOR"} ,{link:"/gradient", name:"Градиент"}]}/>}/>
       </Routes>
     </Router>
   );
