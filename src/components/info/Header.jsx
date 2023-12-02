@@ -7,7 +7,7 @@ const Header = () =>{
             <div className="row align-items-center">
                 <div className="col-12 row mt-3 align-items-center">
                     <h3 className="col-lg-8 col-12 text-wrap text-center">Что-то типо моих лабораторных работ</h3>
-                    <span className="col-lg-4 col-12 text-center">{contacts.phone}</span>
+                    <span className="col-lg-4 col-12 text-center fw-bold">{contacts.phone}</span>
                 </div>
 
 

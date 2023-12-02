@@ -1,29 +1,30 @@
 .contact-link{
     text-decoration: none;
-    color: black;
+    color: #fcfbfc;
 
     font-size: 20px;
 }
 
 #footer{
-    border-top: 3px solid black;
+    border-top: 3px solid #fcfbfc;
+    color: #fcfbfc;
 
     margin-bottom: 150px;
 }
 
 .contact-line{
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid #fcfbfc;
 
     margin-bottom: 15px;
 
 }
 
 .contact-line:nth-child(even){
-    border-right: 3px solid black;
+    border-right: 3px solid #fcfbfc;
 }
 
 .contact-line:nth-child(odd){
-    border-left: 3px solid black;
+    border-left: 3px solid #fcfbfc;
 }
 
 #name_dupl{
